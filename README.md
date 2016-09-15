@@ -22,7 +22,7 @@ To open an database, just use ```open``` method with database name. Second argum
 ##### Tips
 
 ```js
-var db1Request = indexedDB.open("myDatabase1", 1.5);
+var dbRequest = indexedDB.open("myDatabase", 1.5);
 ```
 
 In above example, 1.5 version will be rounded to 1. So use whole number instead of decimal for DB version.
@@ -30,14 +30,21 @@ In above example, 1.5 version will be rounded to 1. So use whole number instead 
 #### Events
 
 ```js
-db.onerror = function(event) {
+dbRequest.onerror = function(event) {
   //On error event
 };
 ```
 
 ```js
-db.onsuccess = function(event) {
+dbRequest.onsuccess = function(event) {
   //On success event
+};
+```
+
+```js
+//This event is triggered when creating a schema
+dbRequest.onupgradeneeded = function(event) {
+
 };
 ```
 
@@ -45,10 +52,14 @@ db.onsuccess = function(event) {
 
 ```js
 var db;
+var store;
+var index;
+dbRequest.onupgradeneeded = function(event) {
+  db = event.target.result;
+  //To create Store, find screenshot below for this
+  store = db.createObjectStore("MyObject", {keyPath: "id"});
 
-dbRequest.onsuccess = function(event) {
-  //On success event
-  db = event.target.result; //DB v1 error
+  index = store.createIndex("Index", ["name"]);
 };
 
 //Handle error for above DB only
@@ -57,7 +68,11 @@ db.onerror = function(event) {
 }
 ```
 
+*After creating store*
+<p align="center"><img src="" width="500" height="500"/></p>
 
+*After creating Index - Name*
+<p align="center"><img src="" width="500" height="500"/></p>
 
 ### Wrapper Libraries
 
