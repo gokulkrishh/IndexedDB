@@ -48,7 +48,7 @@ dbRequest.onupgradeneeded = function(event) {
 };
 ```
 
-#### To handle generic error for particular DB
+#### Create a store
 
 ```js
 var db;
@@ -61,18 +61,22 @@ dbRequest.onupgradeneeded = function(event) {
 
   index = store.createIndex("Index", ["name"]);
 };
+```
 
+*After creating store*
+<p align="center"><img src="https://raw.githubusercontent.com/gokulkrishh/IndexedDB/master/Object-Store1.png" style="max-width: 100%"/></p>
+
+*After creating Index - Name*
+<p align="center"><img src="https://raw.githubusercontent.com/gokulkrishh/IndexedDB/master/Name-Index.png" style="max-width: 100%"/></p>
+
+#### To handle generic error for particular DB
+
+```js
 //Handle error for above DB only
 db.onerror = function(event) {
   console.log("Error Code: ", event.target.errorCode);
 }
 ```
-
-*After creating store*
-<p align="center"><img src="https://raw.githubusercontent.com/gokulkrishh/IndexedDB/master/Object-Store.png" style="max-width: 100%"/></p>
-
-*After creating Index - Name*
-<p align="center"><img src="https://raw.githubusercontent.com/gokulkrishh/IndexedDB/master/Name-Index.png" style="max-width: 100%"/></p>
 
 ### Wrapper Libraries
 
