@@ -64,7 +64,7 @@ dbRequest.onupgradeneeded = function(event) {
 ```
 
 *After creating store*
-<p align="center"><img src="https://raw.githubusercontent.com/gokulkrishh/IndexedDB/master/Object-Store1.png" style="max-width: 100%"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/gokulkrishh/IndexedDB/master/Object-Store.png" style="max-width: 100%"/></p>
 
 *After creating Index - Name*
 <p align="center"><img src="https://raw.githubusercontent.com/gokulkrishh/IndexedDB/master/Name-Index.png" style="max-width: 100%"/></p>
