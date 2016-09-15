@@ -4,7 +4,7 @@
 
 ### Support
 
-<p align="center">![]('IndexedDB')</p>
+<p align="center"><img width="500px" height="300px" src="https://raw.githubusercontent.com/gokulkrishh/IndexedDB/master/indexeddb.png"></p>
 
 [Full specs](https://www.w3.org/TR/IndexedDB/)
 
