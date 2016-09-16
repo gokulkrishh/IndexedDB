@@ -57,7 +57,7 @@ var index;
 dbRequest.onupgradeneeded = function(event) {
   db = event.target.result;
   //To create Store, find screenshot below for this
-  store = db.createObjectStore("MyObject", {keyPath: "id"});
+  store = db.createObjectStore("MyStore", {keyPath: "id"});
 
   index = store.createIndex("Index", ["name"]);
 };
@@ -76,6 +76,38 @@ dbRequest.onupgradeneeded = function(event) {
 db.onerror = function(event) {
   console.log("Error Code: ", event.target.errorCode);
 }
+```
+
+#### Transaction
+
+```js
+var dbTransaction = db.transaction("MyStore", "readwrite");
+var myStore = tx.objectStore("MyStore");
+
+//To store data
+store.put({id: 1, name: "Gokul", age: 25});
+store.put({id: 1, name: "Krishh", age: 20});
+```
+
+#### Query stored data
+
+```js
+var user = store.get(1);
+var userName = index.get("Krishh");
+
+user.onsuccess = function() {
+  console.log(userName.result.id);  // 1
+  console.log(userName.result.name);  // Gokul
+};
+
+userName.onsuccess = function() {
+  console.log(userName.result.name);  // Krishh
+};
+
+//Close the DB, once transaction is done
+dbTransaction.oncomplete = function() {
+  db.close();
+};
 ```
 
 ### Wrapper Libraries
